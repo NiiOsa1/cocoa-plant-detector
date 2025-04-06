@@ -1,0 +1,22 @@
+# Ignore model files and large binaries
+*.pt
+*.jpg
+*.png
+*.zip
+*.tar.gz
+*.pth
+*.h5
+
+# Ignore outputs
+outputs/
+__pycache__/
+build/
+*.egg-info/
+*.ipynb_checkpoints/
+
+# Ignore everything under test_data...
+test_data/
+
+# ...except these specific raw test tiles
+!test_data/inference_tiles/
+!test_data/inference_tiles/*.tif
