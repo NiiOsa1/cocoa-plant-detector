@@ -72,18 +72,11 @@ pip install -r requirements.txt
 
 ---
 
-## 🧠 Download Trained Model
+## 🧠 Model Auto-Download
 
-You can download the trained YOLOv8s model from this [Google Drive link](https://drive.google.com/file/d/1-YJ9n4eoUO-JBcg4BYBmbogrA56F-9FN/view?usp=sharing).
+The trained YOLOv8s model will be downloaded automatically when you run the CLI or Streamlit app — no manual setup needed.
 
-Then place it in the expected path:
-```
-runs/cocoa_yolov8s_phase4_refined/weights/best.pt
-```
-
-💡 Tip: This is the exact path your inference script expects by default (weights_path = ...)
-
-“You can rename it or change the path, just make sure to match it with the --weights argument in CLI.”
+🔗 Backup link (optional): [Download from Google Drive](https://drive.google.com/file/d/1-YJ9n4eoUO-JBcg4BYBmbogrA56F-9FN/view?usp=sharing)
 
 ---
 
@@ -91,32 +84,30 @@ runs/cocoa_yolov8s_phase4_refined/weights/best.pt
 
 ```plaintext
 cocoa-plant-detector/
-├── cocoa_cli_pipeline/         # CLI interface for tiling, inference, and geoconversion
-│   ├── cli.py
-│   ├── infer.py
-│   ├── geoconvert.py
-│   └── tiler.py
-├── cocoa_pipeline_core/        # Core YOLOv8 + GIS logic
-│   ├── tile_creator.py
-│   ├── batch_infer_yolov8.py
-│   └── deduplicate_and_filter.py
-├── streamlit_app/              # Streamlit UI for live tile inference
+├── cocoa_cli_pipeline/         # 🔧 CLI entrypoints (tile, infer, geoconvert)
+│   ├── cli.py                  # ├── CLI command dispatcher
+│   ├── infer.py                # ├── CLI: batch inference
+│   ├── geoconvert.py           # ├── CLI: label → GeoJSON conversion
+│   └── tiler.py                # └── CLI: tile large .tif orthomosaics
+├── cocoa_pipeline_core/        # 🧠 Core reusable logic (non-CLI)
+│   ├── tile_creator.py         # ├── Manual tile generator (1024px w/ overlap)
+│   ├── batch_infer_yolov8.py   # ├── Scripted batch inference (auto-downloads model)
+│   ├── deduplicate_and_filter.py  # ├── Deduplicate + convert YOLO txt to GeoJSON
+│   └── utils.py                # └── Utility functions (e.g., download model)
+├── streamlit_app/              # 🌐 Web UI (live tile prediction)
 │   └── app.py
-├── notebooks/                  # Notebook for training, eval, and GIS overlay
+├── notebooks/                  # 📓 Training + inference walkthrough
 │   └── CocoaPlant_YOLOv8_Training_QGIS_Deployment.ipynb
-├── examples/                   # Visuals: metrics, detection samples, QGIS overlay
-│   ├── val_batch0_pred.jpg
-│   ├── val_batch1_pred.jpg
-│   ├── F1_curve.png
-│   ├── P_curve.png
-│   ├── StreamlitApp.png
-│   ├── StreamlitDetection.png
-│   └── Final_QGIS_Output.png
-├── test_data/                  # Sample tiles and labels for testing
+├── examples/                   # 📸 Visual results: metrics, outputs, overlays
+│   ├── val_batch0_pred.jpg     # ├── Predicted validation samples
+│   ├── StreamlitApp.png        # └── UI + overlay visualizations
+├── test_data/                  # 🧪 Sample tiles + labels for quick testing
 │   └── tile_31200_22400.tif
-├── README.md
-├── requirements.txt
-└── setup.py
+├── runs/                       # 📂 Outputs from inference (auto-created, .gitignored)
+├── requirements.txt            # 📦 Dependencies for pip install
+├── setup.py                    # 📦 Enables pip install . and CLI registration
+├── .gitignore                  # 🧼 Cleans output, model weights, build artifacts
+└── README.md                   # 📖 You're looking at it
 ```
 
 ---
@@ -138,25 +129,16 @@ cocoa-plant-detector/
 
    ```bash
    python cocoa_pipeline_core/batch_infer_yolov8.py \
-   
-     --tiles /path/to/your/tiles_folder \
-     --output runs/your_output_folder
+    --tiles test_data/ \
+    --output runs/test_output
    ```
-Example:
-```
-python cocoa_pipeline_core/batch_infer_yolov8.py \
-  --tiles test_data/ \
-  --output runs/test_output
-```
 
-  🔁 The script will automatically:
 
-  Download best.pt from Google Drive if missing
+ 🔁 The script will automatically:
 
-  Predict on all .tif tiles in the folder
-
-  Save detection labels and visual outputs
-
+- Download `best.pt` from Google Drive if missing
+- Predict on all `.tif` tiles in the folder
+- Save detection labels and visual outputs
 
 
    Inference across all tiles
@@ -262,15 +244,14 @@ Example Usage:
 cocoa-cli tile --input path/to/Image_4.tif --output tiles/
 
  2. Run batch inference
-cocoa-cli infer --tiles tiles/ --weights weights/best.pt --output predictions/
+cocoa-cli infer --tiles tiles/ --output predictions/
 
  3. Convert YOLO txt → GeoJSON (deduplicated, GIS-ready)
 cocoa-cli geoconvert --input predictions/ --output output.geojson
 
  ```
 
-📌 Note: Please make sure your input paths exist before running. Use `test_data/` or your own orthomosaics.
-
+💡 The trained model is automatically downloaded if missing. You do not need to manually specify `--weights` unless using a custom model.
 
 ## Geo-Referencing Details
 
