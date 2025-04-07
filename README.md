@@ -12,6 +12,16 @@
 
 [![Live Demo](https://img.shields.io/badge/🔎%20Live%20Demo-Streamlit-blue?logo=streamlit)](https://cocoa-plant-detector.streamlit.app)
 [![GitHub Repo](https://img.shields.io/badge/🧠%20GitHub-Repository-orange?logo=github)](https://github.com/NiiOsa1/cocoa-plant-detector)
+[![PyPI version](https://badge.fury.io/py/cocoa-plant-detector.svg)](https://pypi.org/project/cocoa-plant-detector/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+An end-to-end YOLOv8 pipeline to detect cocoa-plants + missed-planting-holes from aerial imagery. Output is QGIS-ready, and available via both a Python CLI and a Streamlit demo.
+
+## 🚀 Quick Install
+
+```bash
+pip install cocoa-plant-detector
+```
 
 ---
 
@@ -54,14 +64,19 @@ It includes:
 
 ---
 
-## 🚀 Features
+## 📦 Features
 
-- 🧱 Orthomosaic tiling with overlap
-- 🧠 YOLOv8 CLI + Streamlit interface
-- 🌍 GeoJSON/GPKG GIS-ready outputs
-- 🎯 UTM coordinate conversion + deduplication
-- 🧪 Notebook: training, inference, and QGIS integration
+🤖 YOLOv8 deep learning for cocoa plant & hole detection
 
+🌍 GeoJSON/GPKG export with spatial deduplication
+
+🖥️ Easy CLI access: cocoa-cli
+
+🌐 Streamlit App: Upload + detect live
+
+🛰️ Built for drone/orthomosaic imagery
+
+✅ Packaged & published on PyPI
 
 ---
 
