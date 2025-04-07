@@ -290,16 +290,16 @@ Run the pipeline locally:
 
 
  1. Tile image
-python tile_creator_overlap.py
+python cocoa_pipeline_core/tile_creator.py
 
  2. Run inference
-python yolo_batch_inference_v2.py
+python cocoa_pipeline_core/batch_infer_yolov8.py
 
  3. Convert & deduplicate
-python deduplicate_and_filter_final.py
+python cocoa_pipeline_core/deduplicate_and_filter.py
 
  Optional: Streamlit UI
-streamlit run streamlit_app.py
+streamlit run streamlit_app/app.py
 
 
 ---
