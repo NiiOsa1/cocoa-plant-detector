@@ -28,7 +28,10 @@
 
 ---
 
-## Demo Notebook  
+## Demo Notebook
+
+> 📌 **Note:** GitHub may truncate full notebook preview due to image-heavy output — download or open locally for complete view.
+
 - [📓 Training, Inference, Mapping with YOLOv8](notebooks/CocoaPlant_YOLOv8_Training_QGIS_Deployment.ipynb)
 
 ---
@@ -72,24 +75,32 @@ pip install -r requirements.txt
 
 ```plaintext
 cocoa-plant-detector/
-├── cocoa_cli_pipeline/         # CLI-based YOLOv8 pipeline (tiling, inference, postproc)
-│   └── __init__.py
+├── cocoa_cli_pipeline/         # CLI interface for tiling, inference, and geoconversion
+│   ├── cli.py
+│   ├── infer.py
+│   ├── geoconvert.py
+│   └── tiler.py
+├── cocoa_pipeline_core/        # Core YOLOv8 + GIS logic
+│   ├── tile_creator.py
+│   ├── batch_infer_yolov8.py
+│   └── deduplicate_and_filter.py
 ├── streamlit_app/              # Streamlit UI for live tile inference
-│   └── streamlit_app.py
-├── notebooks/                  # Notebooks for training, inference, and mapping
+│   └── app.py
+├── notebooks/                  # Notebook for training, eval, and GIS overlay
 │   └── CocoaPlant_YOLOv8_Training_QGIS_Deployment.ipynb
-├── examples/                   # Sample predictions, metrics, visuals
+├── examples/                   # Visuals: metrics, detection samples, QGIS overlay
 │   ├── val_batch0_pred.jpg
 │   ├── val_batch1_pred.jpg
-│   ├── Final_QGIS_Output.png
-│   └── StreamlitApp.png
-├── test_data/                  # Example tiles + YOLO labels
-│   ├── tiles/
-│   └── labels/
-├── assets/                     # Badges, logos, banners (for GitHub visuals)
-├── requirements.txt
+│   ├── F1_curve.png
+│   ├── P_curve.png
+│   ├── StreamlitApp.png
+│   ├── StreamlitDetection.png
+│   └── Final_QGIS_Output.png
+├── test_data/                  # Sample tiles and labels for testing
+│   └── tile_31200_22400.tif
 ├── README.md
-└── .gitignore
+├── requirements.txt
+└── setup.py
 ```
 
 ---
@@ -308,6 +319,7 @@ streamlit run streamlit_app.py
 
 Here’s a quick walkthrough of the pipeline in action:
 
+A few visual highlights from model performance and predictions:
 
 ### 📊 Training Metrics & Model Behavior
 
