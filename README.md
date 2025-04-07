@@ -175,24 +175,13 @@ Bounding boxes converted to UTM, deduplicated, and displayed on the original ort
 ![QGIS Overlay](examples/Final_QGIS_Output.png)
 
 
-##  Streamlit Web Demo
+## 🚀 Streamlit Web Demo
 
-  A live demo is built with Streamlit for easy testing:
+A live demo is available to test cocoa plant and planting hole detection directly in your browser:
 
-  ```bash 
-     streamlit run streamlit_app/app.py
-  ```
+👉 [Launch the Streamlit App](https://cocoa-plant-detector.streamlit.app)
 
-
-Features:
-
-  Upload .tif, .jpg, .png image tile
-
-  Runs YOLOv8 detection in real-time
-
-  Displays annotated predictions
-
-  Fast + local — no data is uploaded
+You can upload `.tif`, `.jpg`, or `.png` tiles and get YOLOv8-predicted outputs in real time — powered by the same model used in the pipeline.
 
 
 ### 🚀 Streamlit Demo
@@ -343,11 +332,12 @@ A few visual highlights from model performance and predictions:
 
 ## 🧪 Try It Yourself
 
-To test the pipeline locally with 5 sample tiles:
+Want to test the pipeline locally with included sample tiles?
 
 ```bash
 streamlit run streamlit_app/app.py
 ```
+Upload from test_data/ and see the same prediction pipeline running on your machine.
 
 ## License
 This repository is licensed under the MIT License.
