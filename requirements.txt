@@ -1,5 +1,12 @@
-ultralytics==8.1.0
-opencv-python
 streamlit
+ultralytics==8.3.96
+opencv-python-headless
+pandas
+numpy
 Pillow
-requests
+matplotlib
+scikit-learn
+pyproj
+shapely
+geopandas
+pyogrio
