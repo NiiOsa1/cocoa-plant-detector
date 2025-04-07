@@ -81,7 +81,9 @@ Then place it in the expected path:
 runs/cocoa_yolov8s_phase4_refined/weights/best.pt
 ```
 
-💡 Tip: This is the exact path your inference script expects by default (weights_path = ...).
+💡 Tip: This is the exact path your inference script expects by default (weights_path = ...)
+
+“You can rename it or change the path, just make sure to match it with the --weights argument in CLI.”
 
 ---
 
