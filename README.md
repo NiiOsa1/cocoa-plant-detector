@@ -231,6 +231,8 @@ cocoa-cli geoconvert --input predictions/ --output output.geojson
 
  ```
 
+📌 Note: Please make sure your input paths exist before running. Use `test_data/` or your own orthomosaics.
+
 
 ## Geo-Referencing Details
 
