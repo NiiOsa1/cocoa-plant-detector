@@ -10,10 +10,11 @@
 ![QGIS](https://img.shields.io/badge/GIS-QGIS_Compatible-green?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
+[![PyPI version](https://badge.fury.io/py/cocoa-plant-detector.svg)](https://pypi.org/project/cocoa-plant-detector/)
 [![Live Demo](https://img.shields.io/badge/🔎%20Live%20Demo-Streamlit-blue?logo=streamlit)](https://cocoa-plant-detector.streamlit.app)
 [![GitHub Repo](https://img.shields.io/badge/🧠%20GitHub-Repository-orange?logo=github)](https://github.com/NiiOsa1/cocoa-plant-detector)
-[![PyPI version](https://badge.fury.io/py/cocoa-plant-detector.svg)](https://pypi.org/project/cocoa-plant-detector/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 
 An end-to-end YOLOv8 pipeline to detect cocoa-plants + missed-planting-holes from aerial imagery. Output is QGIS-ready, and available via both a Python CLI and a Streamlit demo.
 
