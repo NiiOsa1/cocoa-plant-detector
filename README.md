@@ -69,6 +69,20 @@ git clone https://github.com/NiiOsa1/cocoa-plant-detector.git
 cd cocoa-plant-detector
 pip install -r requirements.txt
 ```
+
+---
+
+## 🧠 Download Trained Model
+
+You can download the trained YOLOv8s model from this [Google Drive link](https://drive.google.com/file/d/1-YJ9n4eoUO-JBcg4BYBmbogrA56F-9FN/view?usp=sharing).
+
+Then place it in the expected path:
+```
+runs/cocoa_yolov8s_phase4_refined/weights/best.pt
+```
+
+💡 Tip: This is the exact path your inference script expects by default (weights_path = ...).
+
 ---
 
 ##  Project Structure
@@ -117,9 +131,31 @@ cocoa-plant-detector/
    Output: tiles1/ (1024×1024 px tiles with 22% overlap)
 
 2. 🧠 YOLOv8 Batch Inference
+
+   You can now run the inference script with your own tile folder like this:
+
    ```bash
-   python cocoa_pipeline_core/batch_infer_yolov8.py
+   python cocoa_pipeline_core/batch_infer_yolov8.py \
+   
+     --tiles /path/to/your/tiles_folder \
+     --output runs/your_output_folder
    ```
+Example:
+```
+python cocoa_pipeline_core/batch_infer_yolov8.py \
+  --tiles test_data/ \
+  --output runs/test_output
+```
+
+  🔁 The script will automatically:
+
+  Download best.pt from Google Drive if missing
+
+  Predict on all .tif tiles in the folder
+
+  Save detection labels and visual outputs
+
+
 
    Inference across all tiles
 
