@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="examples/Banner1.png" alt="Cocoa AI Detector Banner" width="100%">
+</p>
+
+
 # 🌱 Cocoa Plant Detection + GIS Pipeline with YOLOv8 + Streamlit
 
 ![repo-banner](https://img.shields.io/badge/Status-Production--Ready-success?style=flat-square)
