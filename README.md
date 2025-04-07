@@ -5,9 +5,8 @@
 ![QGIS](https://img.shields.io/badge/GIS-QGIS_Compatible-green?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
-
-[![Live Demo](https://img.shields.io/badge/🔎%20Live%20Demo-Streamlit-blue?logo=streamlit)](https://cocoa-detector.streamlit.app)
-[![GitHub Repo](https://img.shields.io/badge/🧠%20GitHub-Repository-orange?logo=github)](https://github.com/NiiOsa1/cocoa-plant-detection-gis-yolov8-streamlit)
+[![Live Demo](https://img.shields.io/badge/🔎%20Live%20Demo-Streamlit-blue?logo=streamlit)](https://cocoa-plant-detector.streamlit.app)
+[![GitHub Repo](https://img.shields.io/badge/🧠%20GitHub-Repository-orange?logo=github)](https://github.com/NiiOsa1/cocoa-plant-detector)
 
 ---
 
@@ -18,7 +17,7 @@
 - [Full Detection Pipeline](#full-detection-pipeline)
 - [QGIS Integration](#qgis-integration)
 - [Streamlit Web Demo](#streamlit-web-demo)
-- [ommand-Line Interface (CLI)](#️#command-line-interface-cli)
+- [Command-Line Interface (CLI)](#command-line-interface-cli)
 - [Geo-Referencing Details](#geo-referencing-details)
 - [Dataset Notes](#dataset-notes)
 - [Model Performance](#model-performance)
@@ -45,7 +44,28 @@ It includes:
 - 🧭 Spatial deduplication and coordinate conversion
 - 🗂️ GeoJSON/GPKG export for GIS tools
 
+---
 
+## 🚀 Features
+
+- 🧱 Orthomosaic tiling with overlap
+- 🧠 YOLOv8 CLI + Streamlit interface
+- 🌍 GeoJSON/GPKG GIS-ready outputs
+- 🎯 UTM coordinate conversion + deduplication
+- 🧪 Notebook: training, inference, and QGIS integration
+
+
+---
+
+## 🧪 Installation
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/NiiOsa1/cocoa-plant-detector.git
+cd cocoa-plant-detector
+pip install -r requirements.txt
+```
 ---
 
 ##  Project Structure
@@ -78,7 +98,7 @@ cocoa-plant-detector/
 
 1. **🧱 Tile Large Aerial Image**
    ```bash
-   python tile_creator_overlap.py
+   python cocoa_pipeline_core/tile_creator.py
    ```
 
    Input: Image_4.tif
@@ -87,18 +107,21 @@ cocoa-plant-detector/
 
 2. 🧠 YOLOv8 Batch Inference
    ```bash
-   python yolo_batch_inference_v2.py
+   python cocoa_pipeline_core/batch_infer_yolov8.py
    ```
 
    Inference across all tiles
 
    Confidence: conf=0.22, IoU: 0.73
-0
-   Outputs YOLO .txt forma
+
+   Outputs YOLO .txt format
 
 
 3. 🌍 Convert to GeoJSON/GPKG
 
+   ```bash
+   python cocoa_pipeline_core/deduplicate_and_filter.py
+   ```
    python deduplicate_and_filter_final.py
  
    Converts to map-based UTM coordinates
@@ -108,8 +131,6 @@ cocoa-plant-detector/
    Saves:
 
    qgis_ready6_detections.geojson
-
-   qgis_ready6_detections.gpkg
 
 
 ## QGIS Integration
@@ -143,13 +164,12 @@ Bounding boxes converted to UTM, deduplicated, and displayed on the original ort
 ![QGIS Overlay](examples/Final_QGIS_Output.png)
 
 
-
 ##  Streamlit Web Demo
 
   A live demo is built with Streamlit for easy testing:
 
   ```bash 
-     streamlit run streamlit_app.py
+     streamlit run streamlit_app/app.py
   ```
 
 
@@ -309,7 +329,13 @@ Here’s a quick walkthrough of the pipeline in action:
 
 ---
 
+## 🧪 Try It Yourself
 
+To test the pipeline locally with 5 sample tiles:
+
+```bash
+streamlit run streamlit_app/app.py
+```
 
 ## License
 This repository is licensed under the MIT License.
