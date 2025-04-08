@@ -49,3 +49,4 @@ __pycache__/
 *.pth
 *.h5
 *.ckpt
+results/

@@ -272,6 +272,14 @@ cocoa-cli geoconvert --input predictions/ --output output.geojson
 
  ```
 
+✅ CLI Prediction in Action
+Here's a sample CLI batch inference run, showing per-tile predictions, detection speeds, and saved outputs.
+
+
+<p align="center"> <img src="examples/CLI_Results.png" alt="CLI Prediction Output" width="90%"> </p>
+
+
+
 💡 The trained model is automatically downloaded if missing. You do not need to manually specify `--weights` unless using a custom model.
 
 ## Geo-Referencing Details
